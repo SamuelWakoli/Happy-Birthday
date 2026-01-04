@@ -8,11 +8,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
@@ -45,14 +43,26 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(modifier: Modifier = Modifier, name: String, from: String) {
     val backgroundImage = painterResource(R.drawable.androidparty)
+    val kodee = painterResource(R.drawable.kodee)
 
-    Box {
+
+    Box(
+        modifier = Modifier.fillMaxSize()
+    ) {
         Image(
-            backgroundImage,
+            painter = backgroundImage,
             contentDescription = null,
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop,
             alpha = 0.8f
+        )
+
+        Image(
+            painter = kodee,
+            contentDescription = null,
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(16.dp),
         )
 
         Column(
@@ -72,7 +82,6 @@ fun Greeting(modifier: Modifier = Modifier, name: String, from: String) {
                 style = MaterialTheme.typography.displayLarge,
                 fontWeight = FontWeight.ExtraBold
             )
-            Spacer(Modifier.size(100.dp))
             Text(
                 text = stringResource(R.string.signature_text, from),
                 modifier = Modifier
@@ -90,7 +99,7 @@ fun Greeting(modifier: Modifier = Modifier, name: String, from: String) {
 @Composable
 fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        Greeting(name = "Sam", from = "Emma")
+        Greeting(name = "Sam", from = "Kodee")
     }
 }
 
@@ -100,7 +109,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
         Greeting(
             modifier = Modifier.padding(innerPadding),
             name = "Sam",
-            from = "Emma",
+            from = "Kodee",
         )
     }
 }
